@@ -11,9 +11,13 @@ In this guide, we'll walk you through how to perform zero-downtime upgrades for
 Linkerd.
 
 {{< note >}}
-This page contains instructions for the latest edge release of Linkerd. If
-you have installed a [stable distribution](/releases/#stable) of Linkerd, the
-vendor may have additional guidance on how to upgrade.
+
+This page contains instructions for the latest edge release of Linkerd. If you
+have installed a [stable distribution](/releases/#stable) of Linkerd, the
+vendor may have additional guidance on how to upgrade. You can find more
+information about the different kinds of Linkerd releases on the [Releases and
+Versions](/releases/) page.
+
 {{< /note >}}
 
 Read through this guide carefully. Additionally, before starting a specific
@@ -29,6 +33,8 @@ may contain important information about your version.
 
 ## Version numbering
 
+### Stable releases
+
 For stable releases, Linkerd follows a version numbering scheme of the form
 `2.<major>.<minor>`. In other words, "2" is a static prefix, followed by the
 major version, then the minor.
@@ -37,6 +43,21 @@ Changes in minor versions are intended to be backwards compatible with the
 previous version. Changes in major version *may* introduce breaking changes,
 although we try to avoid that whenever possible.
 
+### Edge releases
+
+For edge releases, Linkerd issues explicit [guidance about each
+release](../../../releases/#edge-release-guidance). Before installing an edge
+release, always consult the guidance for that release!
+
+{{< warning >}}
+
+Edge releases are **not** semantically versioned; the edge release number
+itself does not give you any assurance about breaking changes,
+incompatibilities, etc. **Always** read the guidance for a given edge release
+before installing it!
+
+{{< /warning >}}
+
 ## Upgrade paths
 
 The following upgrade paths are generally safe. However, before starting a
@@ -44,32 +65,54 @@ deploy, it is important to check the upgrade notes before
 proceeding—occasionally, specific minor releases may have additional
 restrictions.
 
-**Within the same major version**. It is usually safe to upgrade to the latest
-minor version within the same major version. In other words, if you are
-currently running version *2.x.y*, upgrading to *2.x.z*, where *z* is the latest
-minor version for major version *x*, is safe. This is true even if you would
-skip intermediate intermediate minor versions, i.e. it is still safe even if
-*z* > *y + 1*.
+**Stable within the same major version**. It is usually safe to upgrade to the
+latest minor version within the same major version. In other words, if you are
+currently running version *2.x.y*, upgrading to *2.x.z*, where *z* is the
+latest minor version for major version *x*, is safe. This is true even if you
+would skip intermediate intermediate minor versions, i.e. it is still safe
+even if *z* > *y + 1*.
 
-**To the next major version**. It is usually safe to upgrade to the latest minor
-version of the *next* major version. In other words, if you are currently
-running version *2.x.y*, upgrading to *2.x + 1.w* will be safe, where *w* is the
-latest minor version available for major version *x + 1*.
+**Stable to the next major version**. It is usually safe to upgrade to the
+latest minor version of the *next* major version. In other words, if you are
+currently running version *2.x.y*, upgrading to *2.x + 1.w* will be safe,
+where *w* is the latest minor version available for major version *x + 1*.
 
-**To later major versions**. Upgrades that skip one or more major versions
-are not supported. Instead, you should upgrade major versions incrementally.
+**Stable to a later major version**. Upgrades that skip one or more major
+versions are not supported. Instead, you should upgrade major versions
+incrementally.
 
-Again, please check the upgrade notes for the specific version you are upgrading
-*to* for any version-specific caveats.
+**Edge release to a RECOMMENDED edge release**. This is generally safe unless
+the `Cautions` for the later edge release indicate otherwise.
+
+{{< warning >}}
+
+It is possible for a **RECOMMENDED** edge release to still contain breaking
+changes. These will be called out in the `Cautions` for that release.
+
+{{< /warning >}}
+
+**Edge release to a NOT RECOMMENDED edge release**. As the guidance implies,
+this is **not recommended**. The `Cautions` for the later release should have
+more information.
+
+Again, please check the upgrade notes or release guidance for the specific
+version you are upgrading *to* for any version-specific caveats.
 
 ## Data plane vs control plane version skew
 
-It is usually safe to run Linkerd's control plane with the data plane from one
-major version earlier. (This skew is a natural consequence of upgrading.) This
-is independent of minor version, i.e. a *2.x.y* data plane and a *2.x + 1.z*
-control plane will work regardless of *y* and *z*.
+### Stable releases
 
-Please check the version-specific upgrade notes before proceeding.
+For stable releases, it is usually safe to run Linkerd's control plane with
+the data plane from one major version earlier. (This skew is a natural
+consequence of upgrading.) This is independent of minor version, i.e. a
+*2.x.y* data plane and a *2.x + 1.z* control plane will work regardless of *y*
+and *z*. Please check the version-specific upgrade notes before proceeding.
+
+### Edge releases
+
+At present, edge releases support control planes of version stable-2.14.0 or
+later. Edge release guidance will have more information as it becomes
+necessary.
 
 Note that new features introduced by the release may not be available for
 workloads with older data planes.
@@ -100,10 +143,17 @@ versions](../../reference/k8s-versions/).
 
 The CLI can be used to validate whether Linkerd was installed correctly.
 
+### Stable releases
+
+Consult the upgrade instructions from the vendor supplying your stable release
+for information about how to upgrade the CLI.
+
+### Edge releases
+
 To upgrade the CLI, run:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install | sh
+curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install-edge | sh
 ```
 
 Alternatively, you can download the CLI directly via the [Linkerd releases
@@ -124,6 +174,9 @@ will upgrade the control plane. This command ensures that all of the control
 plane's existing configuration and TLS secrets are retained.  Linkerd's CRDs
 should be upgraded first, using the `--crds` flag, followed by upgrading the
 control plane.
+
+(If you are using a stable release, your vendor's upgrade instructions may
+have more information.)
 
 ```bash
 linkerd upgrade --crds | kubectl apply -f -
@@ -243,11 +296,15 @@ This section contains release-specific information about upgrading.
 ### Upgrade notice: stable-2.15 and beyond
 
 As of February 2024, the Linkerd project is no longer producing open source
-stable release artifacts. Please read the [2.15
-announcement](/2024/02/21/announcing-linkerd-2.15/#a-new-model-for-stable-releases)
-for details.
+stable release artifacts. The [Releases and Versions](/releases/) page
+contains more information about the different kinds of Linkerd releases.
 
-See [the full list of Linkerd releases](/releases/) for ways to get Linkerd.
+Known distributions of Linkerd with stable release artifacts include:
+
+- [Buoyant Enterprise for
+  Linkerd](https://docs.buoyant.io/buoyant-enterprise-linkerd) from Buoyant,
+  creators of Linkerd ([upgrade
+  instructions](https://docs.buoyant.io/buoyant-enterprise-linkerd/latest/upgrade/))
 
 ### Upgrade notice: stable-2.14.0
 

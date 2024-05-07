@@ -14,16 +14,29 @@ weight = 2
 
 Welcome to Linkerd! 🎈
 
-In this guide, we'll walk you through how to install Linkerd into your
-Kubernetes cluster. Then we'll deploy a sample application to show off what
-Linkerd can do.
+In this guide, we'll walk you through how to install the latest _edge release_
+of Linkerd into your Kubernetes cluster. New edge releases usually appear
+weekly, and always represent the latest and greatest development work being
+done on Linkerd. This means that edge releases always have the latest new
+features and fixes, but of course they may also have bugs, work that's later
+backed out, or breaking changes (though we try to avoid these things!).
 
-This guide is designed to walk you through the basics of Linkerd. First, you'll
-install the *CLI* (command-line interface) onto your local machine. Using this
-CLI, you'll then install the *control plane* onto your Kubernetes cluster.
-Finally, you'll "mesh" an application by adding Linkerd's *data plane* to it.
+As of February 2024, the Linkerd project only produces edge releases. Using
+them and [reporting
+bugs](https://github.com/linkerd/linkerd2/issues/new/choose) is a great way to
+help Linkerd! But if that isn't for you, no problem -- check out [Linkerd
+releases](/releases/) for more about _stable releases_ from the vendor
+community.
 
-{{< releases >}}
+## Overview
+
+First you'll install the Linkerd *CLI* (command-line interface) onto your
+local machine. Using this CLI, you'll then install the Linkerd *control plane*
+onto your Kubernetes cluster. Finally, you'll install a sample application and
+"mesh" it by adding Linkerd's *data plane* to it, so that you can put Linkerd
+through its paces.
+
+This may sound complex, but in practice it's pretty simple -- let's get to it!
 
 ## Step 0: Setup
 
@@ -56,11 +69,13 @@ the next step.
 
 ## Step 1: Install the CLI
 
+{{< releases >}}
+
 If this is your first time running Linkerd, you will need to download the
 `linkerd` CLI onto your local machine. The CLI will allow you to interact with
 your Linkerd deployment.
 
-To install the CLI manually, run:
+To install the CLI for the latest edge release manually, run:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install-edge | sh
@@ -72,9 +87,8 @@ Be sure to follow the instructions to add it to your path:
 export PATH=$HOME/.linkerd2/bin:$PATH
 ```
 
-This will install the CLI for the latest _edge release_ of Linkerd. (For more
-information about what edge releases are, see our [Releases and
-Versions](../../releases/) page.)
+Again, this will install the CLI for the latest edge release of Linkerd. For
+more information, see [Linkerd Releases](../../releases/).
 
 Once installed, verify the CLI is running correctly with:
 

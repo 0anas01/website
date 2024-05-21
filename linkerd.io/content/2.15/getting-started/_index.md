@@ -17,16 +17,13 @@ Welcome to Linkerd! 🎈
 In this guide, we'll walk you through how to install the latest _edge release_
 of Linkerd into your Kubernetes cluster. New edge releases usually appear
 weekly, and always represent the latest and greatest development work being
-done on Linkerd. This means that edge releases always have the latest new
-features and fixes, but of course they may also have bugs, work that's later
-backed out, or breaking changes (though we try to avoid these things!).
+done on Linkerd. Using them and [reporting any
+issues](https://github.com/linkerd/linkerd2/issues/new/choose) is a great way
+to help Linkerd!
 
-As of February 2024, the Linkerd project only produces edge releases. Using
-them and [reporting
-bugs](https://github.com/linkerd/linkerd2/issues/new/choose) is a great way to
-help Linkerd! But if that isn't for you, no problem -- check out [Linkerd
-releases](/releases/) for more about _stable releases_ from the vendor
-community.
+You can also check out [Linkerd releases](/releases/) for more about _stable
+releases_ from the vendor community. The Linkerd project itself only produces
+edge releases.
 
 ## Overview
 

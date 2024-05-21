@@ -12,18 +12,18 @@ Before you can use Linkerd, you'll need to install the [control
 plane](../../reference/architecture/#control-plane). This page covers how to
 accomplish that.
 
-{{< warning >}}
+{{< note >}}
 
-As of February 2024, the Linkerd project is no longer producing open source
-stable release artifacts. As such, this page contains instructions for
-installing the latest edge release of Linkerd. If you have installed a [stable
+The Linkerd project itself only produces [edge releases](/releases/) (for more
+information about the different kinds of Linkerd releases, see the [Releases
+and Versions](/releases/) page).
+
+As such, this page contains instructions for installing the latest edge
+release of Linkerd. If you have installed a [stable
 distribution](/releases/#stable) of Linkerd, the vendor should provide
 additional guidance on installing Linkerd.
 
-You can find more information about the different kinds of Linkerd releases on
-the [Releases and Versions](/releases/) page.
-
-{{< /warning >}}
+{{< /note >}}
 
 Linkerd's control plane can be installed in two ways: with the CLI and with
 Helm. The CLI is convenient and easy, but for production use cases we recommend

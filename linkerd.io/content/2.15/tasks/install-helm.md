@@ -6,19 +6,19 @@ description = "Install Linkerd onto your Kubernetes cluster using Helm."
 Linkerd can be installed via Helm rather than with the `linkerd install`
 command. This is recommended for production, since it allows for repeatability.
 
-{{< warning >}}
+{{< note >}}
 
-As of February 2024, the Linkerd project is no longer producing open source
-stable release artifacts. As such, this page contains instructions for using
-Helm to install the latest edge release of Linkerd, and `helm.linkerd.io` does
-not contain Helm charts for stable releases after `stable-2.14`. If you have
-installed a [stable distribution](/releases/#stable) of Linkerd, the vendor
-should provide additional guidance on how to use Helm.
+The Linkerd project itself only produces [edge releases](/releases/) (for more
+information about the different kinds of Linkerd releases, see the [Releases
+and Versions](/releases/) page).
 
-You can find more information about the different kinds of Linkerd releases on
-the [Releases and Versions](/releases/) page.
+As such, this page contains instructions for using Helm to install the latest
+edge release of Linkerd, and `helm.linkerd.io` does not contain Helm charts
+for stable releases after `stable-2.14`. If you have installed a [stable
+distribution](/releases/#stable) of Linkerd, the vendor should provide
+additional guidance on how to use Helm.
 
-{{< /warning >}}
+{{< /note >}}
 
 ## Prerequisite: generate mTLS certificates
 

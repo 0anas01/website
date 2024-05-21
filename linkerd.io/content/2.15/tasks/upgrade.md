@@ -295,8 +295,8 @@ This section contains release-specific information about upgrading.
 
 ### Upgrade notice: stable-2.15 and beyond
 
-As of February 2024, the Linkerd project is no longer producing open source
-stable release artifacts. The [Releases and Versions](/releases/) page
+As of February 2024, the Linkerd project itself only produces [edge
+release](/releases/) artifacts. The [Releases and Versions](/releases/) page
 contains more information about the different kinds of Linkerd releases.
 
 Known distributions of Linkerd with stable release artifacts include:

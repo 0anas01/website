@@ -14,7 +14,7 @@ and Versions](/releases/) page).
 
 As such, this page contains instructions for using Helm to install the latest
 edge release of Linkerd, and `helm.linkerd.io` does not contain Helm charts
-for stable releases after `stable-2.14`. If you have installed a [stable
+for stable releases after `stable-2.14`. If you are using a [stable
 distribution](/releases/#stable) of Linkerd, the vendor should provide
 additional guidance on how to use Helm.
 
@@ -35,7 +35,7 @@ generate these.
 
 As noted in the warning above, **this page contains instructions for using
 Helm to install the latest edge release of Linkerd** and `helm.linkerd.io`
-does not contain charts for stable releases after `stable-2.15`. You can find
+does not contain charts for stable releases after `stable-2.14`. You can find
 more information about the different kinds of Linkerd releases on the
 [Releases and Versions](/releases/) page.
 

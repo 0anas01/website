@@ -19,7 +19,7 @@ information about the different kinds of Linkerd releases, see the [Releases
 and Versions](/releases/) page).
 
 As such, this page contains instructions for installing the latest edge
-release of Linkerd. If you have installed a [stable
+release of Linkerd. If you are using a [stable
 distribution](/releases/#stable) of Linkerd, the vendor should provide
 additional guidance on installing Linkerd.
 
